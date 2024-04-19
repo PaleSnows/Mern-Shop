@@ -1,6 +1,7 @@
 import { Suspense, lazy } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Loader from "./components/Loader";
+import Header from "./components/Header";
 //using lazy to render only page that is currently being used for more effient usage
 const Home = lazy(() => import("./pages/Home"));
 const Search = lazy(() => import("./pages/Search"));
@@ -29,6 +30,7 @@ const App = () => {
     <BrowserRouter>
       {/* suspense for creating fallback that shows something before the page is fully loaded */}
       <Suspense fallback={<Loader />}>
+        <Header/>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<Search />} />
